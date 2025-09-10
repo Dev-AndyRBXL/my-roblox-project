@@ -22,13 +22,12 @@ jobs:
           toolchain: stable
           override: true
 
+
       - name: Install Selene
         run: |
           curl -L https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.tar.gz -o selene.tar.gz
-          sudo apt-get update && sudo apt-get install -y tar
           tar -xzf selene.tar.gz
           sudo mv selene /usr/local/bin/selene
-
 
       - name: Lint with Selene
         run: selene ./modules
