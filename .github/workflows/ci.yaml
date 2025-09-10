@@ -26,7 +26,7 @@ jobs:
         run: cargo install selene
 
       - name: Lint with Selene
-        run: selene ./modules
+        run: selene ./src
 
   style:
     name: Styling
