@@ -24,10 +24,11 @@ jobs:
 
       - name: Install Selene
         run: |
-          curl -L https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.zip -o selene.zip
-          sudo apt-get update && sudo apt-get install -y unzip
-          unzip selene.zip -d selene
-          sudo mv selene/selene /usr/local/bin/selene
+          curl -L https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.tar.gz -o selene.tar.gz
+          sudo apt-get update && sudo apt-get install -y tar
+          tar -xzf selene.tar.gz
+          sudo mv selene /usr/local/bin/selene
+
 
       - name: Lint with Selene
         run: selene ./modules
@@ -47,10 +48,9 @@ jobs:
 
       - name: Install luau-lsp
         run: |
-          sudo apt-get update && sudo apt-get install -y unzip
-          curl -L https://github.com/JohnnyMorganz/luau-lsp/releases/latest/download/luau-lsp-linux.zip -o luau-lsp.zip
-          unzip luau-lsp.zip -d luau-lsp
-          sudo mv luau-lsp/luau-lsp /usr/local/bin/luau-lsp
+         curl -L https://github.com/JohnnyMorganz/luau-lsp/releases/latest/download/luau-lsp-linux.tar.gz -o luau-lsp.tar.gz
+         tar -xzf luau-lsp.tar.gz
+         sudo mv luau-lsp /usr/local/bin/luau-lsp
 
       - name: Run luau-lsp
         run: luau-lsp --version
