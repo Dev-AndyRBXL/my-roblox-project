@@ -1,0 +1,6 @@
+{
+	"[lua]": {
+		"editor.defaultFormatter": "JohnnyMorganz.luau-lsp",
+		"editor.formatOnType": true,
+	}
+}

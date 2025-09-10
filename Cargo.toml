@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 rojo = "7.5.1"
+selene = "0.29.0"
+stylua = "2.1.0"
