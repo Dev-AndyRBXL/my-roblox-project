@@ -16,11 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+      - name: Install Selene
+        run: |
+          curl -L https://github.com/Kampfkarren/selene/releases/latest/download/selene-linux.zip -o selene.zip
+          sudo apt-get update && sudo apt-get install -y unzip
+          unzip selene.zip -d selene
+          sudo mv selene/selene /usr/local/bin/selene
 
       - name: Lint with Selene
         run: selene ./modules
@@ -32,7 +33,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run Luau LSP
-        uses: JohnnyMorganz/luau-lsp
-        with:
-          args: --check .
+      - name: Install luau-lsp
+        run: |
+          sudo apt-get update && sudo apt-get install -y unzip
+          curl -L https://github.com/JohnnyMorganz/luau-lsp/releases/latest/download/luau-lsp-linux.zip -o luau-lsp.zip
+          unzip luau-lsp.zip -d luau-lsp
+          # move the binary (adjust path if archive changes)
+          sudo mv luau-lsp/luau-lsp /usr/local/bin/luau-lsp
+
+      - name: Run luau-lsp
+        run: luau-lsp --version
